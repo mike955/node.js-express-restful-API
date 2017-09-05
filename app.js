@@ -1,7 +1,7 @@
 'use strict';
 /***** import node.js librarie *****/
 import path from 'path';
-
+import http from 'http';
 /***** import third-party libraries *****/
 import express from 'express';
 import debugg from 'debug';
@@ -39,3 +39,6 @@ app.listen(configs.port, (err) => {
     }
     console.log('Server start at ' + configs.port);
 })
+
+const server = http.createServer(app);
+module.exports = server;
