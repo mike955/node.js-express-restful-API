@@ -3,15 +3,16 @@ import { expect } from 'chai';
 import Index from '../../app/controllers/index';
 import server from '../../app';
 
+let port = 3000;
 describe('Index', () => {
 
     before(() => {
-        server.listen(3000, (err) => {
+        server.listen(port, (err) => {
             //debug('listen')
             if (err) {
                 throw new Error(err);
             }
-            console.log('Server start at ' + 3000);
+            console.log('Server start at ' + port);
         })
     })
 
