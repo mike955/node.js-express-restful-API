@@ -1,5 +1,6 @@
 'use strict'
 
 module.exports = {
-    port: require('./port').port
+    port: require('./port').port,
+    jwt: require('./jwt')
 }
