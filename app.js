@@ -14,12 +14,6 @@ import router from './app/routes/routes'
 const app = express();
 let debug = debugg('MERN');
 
-if (process.env.NODE_ENV === 'production') {
-    debug('Enviroment is product')
-} else {
-    debug('Enviroment is development')
-}
-
 /** app 设置 **/
 app
     .set('views', path.join(__dirname, 'app/views/pages'))
@@ -31,6 +25,16 @@ app
     .use(bodyParser.urlencoded({ extended: false }))
     .use(bodyParser.json())
     .use(router)
+
+if (process.env.NODE_ENV === 'production') {
+    debug('Enviroment is product')
+} else {
+    debug('Enviroment is development');
+    app.use((err, req, res, next) => { //增加错误处理中间件
+        console.log(err.stack);
+        next();
+    })
+}
 
 app.listen(configs.port, (err) => {
     debug('listen')
