@@ -9,6 +9,5 @@ before_script:
 
 script:
   - npm test
-  - node benchmark/index.js
 
 after_script
